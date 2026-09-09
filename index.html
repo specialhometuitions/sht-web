@@ -53,14 +53,18 @@
     text-transform:uppercase;
     color:var(--teal);
     display:flex;align-items:center;gap:10px;
+    flex-wrap:wrap;
+    row-gap:6px;
     margin-bottom:16px;
+    max-width:100%;
   }
+  .eyebrow > *{min-width:0;overflow-wrap:break-word;}
   .eyebrow::before{content:'';width:22px;height:1px;background:var(--teal);display:inline-block;}
   .on-dark .eyebrow{color:var(--brass-light);}
   .on-dark .eyebrow::before{background:var(--brass-light);}
 
   /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;min-width:0;max-width:100%;}
   .reveal.in{opacity:1;transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1;transform:none;transition:none;}
@@ -134,22 +138,25 @@
     display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;
     padding-bottom:86px;
   }
+  .hero-copy{min-width:0;}
   .hero h1{
     font-size:clamp(38px, 5vw, 62px);
     line-height:1.06;
     font-weight:560;
     margin-bottom:26px;
+    overflow-wrap:break-word;
   }
   .hero h1 em{
     font-style:italic;font-weight:450;color:var(--brass-light);
   }
   .hero p.lede{
     font-size:17.5px;color:rgba(246,241,230,0.74);max-width:520px;margin-bottom:38px;
+    overflow-wrap:break-word;
   }
   .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
   .hero-note{font-family:var(--mono);font-size:12px;color:rgba(246,241,230,0.5);letter-spacing:0.03em;}
 
-  .hero-visual{position:relative;}
+  .hero-visual{position:relative;min-width:0;}
 
   /* ---------- course image carousel ---------- */
   .course-carousel{
@@ -226,12 +233,12 @@
     border-bottom:1px solid var(--line-dark);
     padding:26px 0;
   }
-  .clockstrip-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-  .clockstrip-label{color:var(--cream);max-width:220px;}
+  .clockstrip-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;min-width:0;}
+  .clockstrip-label{color:var(--cream);max-width:220px;min-width:0;}
   .clockstrip-label .eyebrow{margin-bottom:6px;}
   .clockstrip-label p{font-size:13px;color:rgba(246,241,230,0.6);}
-  .cities{display:flex;gap:34px;flex-wrap:wrap;}
-  .city{text-align:left;}
+  .cities{display:flex;gap:34px;flex-wrap:wrap;min-width:0;max-width:100%;}
+  .city{text-align:left;min-width:0;}
   .city-name{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(246,241,230,0.55);margin-bottom:6px;}
   .city-time{font-family:var(--mono);font-size:21px;color:var(--brass-light);letter-spacing:0.02em;}
   .city-tag{font-size:10.5px;color:rgba(246,241,230,0.4);margin-top:3px;}
@@ -264,6 +271,7 @@
 
   .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .offer-card, .course-card{
+    min-width:0;
     background:linear-gradient(165deg, rgba(246,241,230,0.05), rgba(246,241,230,0.015));
     border:1px solid var(--line-dark);
     border-radius:6px;
@@ -292,7 +300,7 @@
 
   /* ---------- how it works ---------- */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:step;}
-  .step-card{position:relative;padding-top:8px;}
+  .step-card{position:relative;padding-top:8px;min-width:0;}
   .step-num{font-family:var(--mono);font-size:13px;color:var(--brass);border:1px solid var(--brass);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
   .step-card h3{font-size:20px;margin-bottom:10px;}
   .step-card p{font-size:14.5px;color:rgba(36,31,24,0.65);}
@@ -311,6 +319,7 @@
   .prog-card{
     background:var(--cream);border:1px solid var(--line-light);border-radius:6px;padding:26px;
     transition:box-shadow .3s ease, transform .3s ease;
+    min-width:0;
   }
   .prog-card:hover{box-shadow:0 16px 34px rgba(36,31,24,0.08);transform:translateY(-4px);}
   .prog-card h4{font-size:18px;margin-bottom:8px;}
@@ -321,7 +330,7 @@
   /* ---------- why us ---------- */
   .why{background:var(--paper-2);}
   .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line-light);border:1px solid var(--line-light);}
-  .why-card{background:var(--paper-2);padding:34px 28px;}
+  .why-card{background:var(--paper-2);padding:34px 28px;min-width:0;}
   .why-card .icon{width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--brass-light);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:18px;margin-bottom:20px;}
   .why-card h4{font-size:16.5px;margin-bottom:8px;}
   .why-card p{font-size:13.5px;color:rgba(36,31,24,0.6);}
@@ -340,7 +349,7 @@
   /* ---------- testimonials ---------- */
   .testi-section{background:var(--ink);color:var(--cream);}
   .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .testi-card{background:rgba(246,241,230,0.04);border:1px solid var(--line-dark);border-radius:6px;padding:30px;}
+  .testi-card{background:rgba(246,241,230,0.04);border:1px solid var(--line-dark);border-radius:6px;padding:30px;min-width:0;}
   .testi-quote{font-family:var(--display);font-size:17px;font-style:italic;line-height:1.5;margin-bottom:22px;color:var(--cream);}
   .testi-who{display:flex;align-items:center;gap:12px;}
   .testi-name{font-size:13.5px;font-weight:600;}
@@ -367,6 +376,7 @@
   /* ---------- footer ---------- */
   footer{background:var(--ink);color:rgba(246,241,230,0.6);padding:70px 0 30px;border-top:1px solid var(--line-dark);}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;}
+  .footer-brand, .footer-col{min-width:0;}
   .footer-brand p{font-size:13.5px;margin-top:16px;max-width:280px;color:rgba(246,241,230,0.5);}
   .footer-col h5{font-family:var(--mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass-light);margin-bottom:18px;}
   .footer-col a{display:block;font-size:13.5px;color:rgba(246,241,230,0.6);margin-bottom:11px;transition:color .2s ease;}
@@ -432,6 +442,7 @@
     .testi-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
     .clockstrip-inner{flex-direction:column;align-items:flex-start;}
+    .cities{width:100%;}
   }
   @media (max-width:720px){
     .nav-links{display:none;}
